@@ -550,8 +550,11 @@ static CGFloat __smoothstep(CGFloat a, CGFloat b, CGFloat x)
 		
 		CGFloat realTargetCenterY = targetCenterY;
 		
-		if(resolvedStyle == LNPopupInteractionStyleSnap)
+        BOOL isRubberbandEffectEnabled = _containerController.isRubberbandEffectForInteractionEnabled;
+        
+		if(resolvedStyle == LNPopupInteractionStyleSnap && isRubberbandEffectEnabled)
 		{
+             
 			//Rubberband the pull gesture in snap mode.
 			targetCenterY = [self rubberbandFromHeight:targetCenterY];
 			
