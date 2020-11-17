@@ -272,9 +272,9 @@ static NSString* const ePCIEBase64 = @"X2V4aXN0aW5nUHJlc2VudGF0aW9uQ29udHJvbGxlc
     return [(objc_getAssociatedObject(self, _LNPopupRubberbandEffectForInteractionKey) ?: @1) boolValue];
 }
 
-- (void)setRubberbandEffectForInteractionEnabled:(BOOL)isRubberbandEffectEnabled
+- (void)setIsRubberbandEffectForInteractionEnabled:(BOOL)isRubberbandEffectForInteractionEnabled
 {
-    objc_setAssociatedObject(self, _LNPopupRubberbandEffectForInteractionKey, @(isRubberbandEffectEnabled), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    objc_setAssociatedObject(self, _LNPopupRubberbandEffectForInteractionKey, @(isRubberbandEffectForInteractionEnabled), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
 - (LNPopupController*)_ln_popupController_nocreate
