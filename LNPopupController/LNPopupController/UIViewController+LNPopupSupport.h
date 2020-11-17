@@ -202,6 +202,13 @@ typedef NS_ENUM(NSUInteger, LNPopupPresentationState){
 @property (nonatomic, assign) LNPopupInteractionStyle popupInteractionStyle;
 
 /**
+ * The popup bar rubberband effect for snap interaction style.
+ *
+ * The default value of this property is @c true.
+ */
+@property (nonatomic, assign) BOOL isRubberbandEffectForInteractionEnabled;
+
+/**
  * The popup bar managed by the system. (read-only)
  */
 @property (nonatomic, strong, readonly) LNPopupBar* popupBar;
