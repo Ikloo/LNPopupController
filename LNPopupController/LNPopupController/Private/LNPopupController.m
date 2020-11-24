@@ -570,7 +570,8 @@ static CGFloat __smoothstep(CGFloat a, CGFloat b, CGFloat x)
 		
 		[_popupContentView.popupCloseButton _setButtonContainerTransitioning];
 		
-		if(resolvedStyle == LNPopupInteractionStyleSnap && realTargetCenterY / self.popupBar.superview.bounds.size.height > 0.275)
+        BOOL isCanChangeState = realTargetCenterY / self.popupBar.superview.bounds.size.height > _containerController.snapInteractionDismissThreshold;
+		if(resolvedStyle == LNPopupInteractionStyleSnap && isCanChangeState)
 		{
 			_dismissGestureStarted = NO;
 			

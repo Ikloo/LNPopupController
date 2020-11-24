@@ -20,6 +20,7 @@ const void* _LNPopupPresentationContainerViewControllerKey = &_LNPopupPresentati
 const void* _LNPopupContentViewControllerKey = &_LNPopupContentViewControllerKey;
 static const void* _LNPopupInteractionStyleKey = &_LNPopupInteractionStyleKey;
 static const void* _LNPopupRubberbandEffectForInteractionKey = &_LNPopupRubberbandEffectForInteractionKey;
+static const void* _LNPopupSnapInteractionDismissThresholdKey = &_LNPopupSnapInteractionDismissThresholdKey;
 static const void* _LNPopupBottomBarSupportKey = &_LNPopupBottomBarSupportKey;
 static const void* _LNPopupIsInPopupAppearanceTransitionKey = &_LNPopupIsInPopupAppearanceTransitionKey;
 static const void* _LNPopupShouldExtendUnderSafeAreaKey = &_LNPopupShouldExtendUnderSafeAreaKey;
@@ -275,6 +276,17 @@ static NSString* const ePCIEBase64 = @"X2V4aXN0aW5nUHJlc2VudGF0aW9uQ29udHJvbGxlc
 - (void)setIsRubberbandEffectForInteractionEnabled:(BOOL)isRubberbandEffectForInteractionEnabled
 {
     objc_setAssociatedObject(self, _LNPopupRubberbandEffectForInteractionKey, @(isRubberbandEffectForInteractionEnabled), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
+- (CGFloat)snapInteractionDismissThreshold
+{
+    return [(objc_getAssociatedObject(self, _LNPopupSnapInteractionDismissThresholdKey) ?: @0.275) doubleValue];
+}
+
+- (void)setSnapInteractionDismissThreshold:(CGFloat)snapInteractionDismissThreshold
+{
+    CGFloat threshold = MIN(MAX(snapInteractionDismissThreshold, 0), 1);
+    objc_setAssociatedObject(self, _LNPopupSnapInteractionDismissThresholdKey, @(threshold), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
 - (LNPopupController*)_ln_popupController_nocreate
