@@ -209,6 +209,13 @@ typedef NS_ENUM(NSUInteger, LNPopupPresentationState){
 @property (nonatomic, assign) BOOL isRubberbandEffectForInteractionEnabled;
 
 /**
+ * The popup bar rubberband effect strenght for snap interaction style.
+ *
+ * The default value of this property is @c 0.275. Max @c 1.0, min @c 0.0
+ */
+@property (nonatomic, assign) CGFloat snapInteractionDismissThreshold;
+
+/**
  * The popup bar managed by the system. (read-only)
  */
 @property (nonatomic, strong, readonly) LNPopupBar* popupBar;
