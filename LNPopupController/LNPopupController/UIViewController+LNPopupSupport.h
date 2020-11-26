@@ -202,6 +202,13 @@ typedef NS_ENUM(NSUInteger, LNPopupPresentationState){
 @property (nonatomic, assign) LNPopupInteractionStyle popupInteractionStyle;
 
 /**
+ * The popup interactive gesture in scroll view offset for dissmissing.
+ *
+ * The default value of this property is @c 0.0.
+ */
+@property (nonatomic, assign) CGFloat inScrollViewDismissOffset;
+
+/**
  * The popup bar managed by the system. (read-only)
  */
 @property (nonatomic, strong, readonly) LNPopupBar* popupBar;

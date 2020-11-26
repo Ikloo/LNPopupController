@@ -499,12 +499,7 @@ static CGFloat __smoothstep(CGFloat a, CGFloat b, CGFloat x)
 			
 			if(_dismissGestureStarted == NO)
 			{
-				_dismissScrollViewStartingContentOffset = possibleScrollView.contentOffset.y;
-			}
-			
-			if(_popupBar.frame.origin.y > _cachedOpenPopupFrame.origin.y)
-			{
-				possibleScrollView.contentOffset = CGPointMake(possibleScrollView.contentOffset.x, _dismissScrollViewStartingContentOffset);
+				_dismissScrollViewStartingContentOffset = possibleScrollView.contentOffset.y + _containerController.inScrollViewDismissOffset;
 			}
 		}
 		else
@@ -536,6 +531,10 @@ static CGFloat __smoothstep(CGFloat a, CGFloat b, CGFloat x)
 		if(pgr != _popupContentView.popupInteractionGestureRecognizer)
 		{
 			_dismissStartingOffset = [pgr translationInView:self.popupBar.superview].y;
+            if([pgr.view isKindOfClass:[UIScrollView class]])
+            {
+                _dismissStartingOffset += _containerController.inScrollViewDismissOffset;
+            }
 		}
 		else
 		{
