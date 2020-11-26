@@ -21,6 +21,7 @@ const void* _LNPopupContentViewControllerKey = &_LNPopupContentViewControllerKey
 static const void* _LNPopupInteractionStyleKey = &_LNPopupInteractionStyleKey;
 static const void* _LNPopupRubberbandEffectForInteractionKey = &_LNPopupRubberbandEffectForInteractionKey;
 static const void* _LNPopupSnapInteractionDismissThresholdKey = &_LNPopupSnapInteractionDismissThresholdKey;
+static const void* _LNPopupInScrollViewDismissOffsetKey = &_LNPopupInScrollViewDismissOffsetKey;
 static const void* _LNPopupBottomBarSupportKey = &_LNPopupBottomBarSupportKey;
 static const void* _LNPopupIsInPopupAppearanceTransitionKey = &_LNPopupIsInPopupAppearanceTransitionKey;
 static const void* _LNPopupShouldExtendUnderSafeAreaKey = &_LNPopupShouldExtendUnderSafeAreaKey;
@@ -287,6 +288,16 @@ static NSString* const ePCIEBase64 = @"X2V4aXN0aW5nUHJlc2VudGF0aW9uQ29udHJvbGxlc
 {
     CGFloat threshold = MIN(MAX(snapInteractionDismissThreshold, 0), 1);
     objc_setAssociatedObject(self, _LNPopupSnapInteractionDismissThresholdKey, @(threshold), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
+- (CGFloat)inScrollViewDismissOffset
+{
+    return [(objc_getAssociatedObject(self, _LNPopupInScrollViewDismissOffsetKey) ?: @0.0) doubleValue];
+}
+
+- (void)setInScrollViewDismissOffset:(CGFloat)inScrollViewDismissOffset
+{
+    objc_setAssociatedObject(self, _LNPopupInScrollViewDismissOffsetKey, @(inScrollViewDismissOffset), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
 - (LNPopupController*)_ln_popupController_nocreate
